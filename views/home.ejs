@@ -2,3 +2,20 @@
         <h1>
             Codeial / <%= title %>
         </h1>
+
+        <section>
+            <h3>Posts</h3>
+            <form action="/posts/create" method="POST">
+                <textarea name="content" id="" cols="30" rows="3" ></textarea>
+                <input type="submit" name="" id="">
+            </form>
+
+            <div>
+                <% for (post of posts){ %> 
+                    <div>
+                        <%=post.content %>
+                        <%= post.user %>
+                    </div>
+                <% } %>
+            </div>
+        </section>

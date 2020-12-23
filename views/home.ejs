@@ -1,6 +1,6 @@
 
         <h1>
-            Codeial / <%= title %>
+            Cuffs / <%= title %>
         </h1>
 
         <section>
@@ -14,31 +14,12 @@
 
             <div>
                 <% for (post of posts){ %>
-                    <div class="post-container">
-                        <%=post.content %>
-                        <%= post.user.name %>
-
-                        <div class="comments-container">
-
-                            <div id="post-comments-<%=post._id %>">
-                                <% for (comment of post.comments){%>
-                                    <div class="comment">
-                                        <%= comment.content %> <br>
-                                        <small><%= comment.user.name %></small>
-                                    </div>
-                                    
-                                <%} %> 
-                            </div>
-                            <% if(locals.user){ %>
-                                <form action="/comments/create" method="POST">
-                                    <input type="text" name="content" placeholder="Add comments">
-                                    <input type="hidden" name="post" value="<%=post._id%>">
-                                    <input type="submit" value="Add comment">
-                                </form>
-                            <%}%>
-                        </div>
-                        
-                    </div>
+                    <%- include('_post') %>
                 <% } %>
             </div>
+        </section>
+
+        <section id="user-friends">
+            <h4>Friends</h4>
+            <%- include('_people.ejs') %>
         </section>

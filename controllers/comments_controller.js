@@ -20,3 +20,13 @@ module.exports.create = function(req,res) {
         }
     });
 } 
+
+
+module.exports.destroy = function(req,res){
+    Comment.findById(req.params.id,function(err,comment){
+        Post.findByIdAndUpdate(comment.post,{$pull:{comments:comment}},function(err,post){
+            comment.remove();
+            return res.redirect('back');
+        })
+    })
+}

@@ -1,0 +1,18 @@
+<div class="post-container">
+
+    <%=post.content %>
+    <%= post.user.name %>
+
+    <% if(locals.user && post.user.id == locals.user.id){ %> 
+        <div class="delete-button">
+            <a href="/posts/destroy/<%=post.id %>">x</a>
+        </div>
+    <% } %>
+
+    <div class="comments-container">
+
+       <%- include('_comment') -%>
+       
+    </div>
+    
+</div>
